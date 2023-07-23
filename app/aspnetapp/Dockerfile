@@ -6,10 +6,12 @@ FROM mcr.microsoft.com/dotnet/sdk:5.0 AS build
 COPY . /src
 WORKDIR /src
 RUN ls
+RUN dotnet add package NRedisStack
 RUN dotnet build "aspnetapp.csproj" -c Release -o /app/build
 
 FROM build AS publish
 RUN dotnet publish "aspnetapp.csproj" -c Release -o /app/publish
+
 
 FROM base AS final
 WORKDIR /app

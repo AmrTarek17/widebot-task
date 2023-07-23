@@ -7,6 +7,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 
+
 namespace aspnetapp
 {
     public class Startup
@@ -14,6 +15,11 @@ namespace aspnetapp
         public Startup(IConfiguration configuration)
         {
             Configuration = configuration;
+            // Configuration = new ConfigurationBuilder()
+            // .SetBasePath(Directory.GetCurrentDirectory())
+            // .AddJsonFile("appsettings.json", true)
+            // .AddEnvironmentVariables()
+            // .Build();
         }
 
         public IConfiguration Configuration { get; }

@@ -1,0 +1,29 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    service: web
+  name: web
+  namespace: default
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      service: web
+  template:
+    metadata:
+      labels:
+        widebot-task-default: "true"
+        service: web
+    spec:
+      containers:
+        - image: amrtarek6/web-widebot
+          name: web
+          ports:
+            - containerPort: 80
+              protocol: TCP
+          envFrom:
+          - configMapRef:
+              name: my-app-cm    
+      restartPolicy: Always
+

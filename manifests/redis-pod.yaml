@@ -1,0 +1,14 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  labels:
+    widebot-task-default: "true"
+    service: redis
+  name: redis
+spec:
+  containers:
+    - image: redislabs/redismod
+      name: redis
+      ports:
+        - containerPort: 6379
+          protocol: TCP

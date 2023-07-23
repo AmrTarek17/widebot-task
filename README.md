@@ -54,9 +54,10 @@ This project contains:
 
 ### deploy manifests file
     
-        
+```        
 # NOTE
 You need to get attached to cluster using.
+```
 ```bash
 aws eks --region <region> update-kubeconfig --name <clusterName> 
 ```

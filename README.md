@@ -1,4 +1,7 @@
-# widebot-task
+# Widebot Task
+## High Level Design
+![Diagram](./docs/images/diagram.png)
+
 ## Project Info.
 
 This project contains:
@@ -8,9 +11,22 @@ This project contains:
 
 ## Task Over view
 
-![image](https://github.com/AmrTarek17/widebot-task/assets/47079437/6c4fd6ac-9333-4846-bd0a-ca444223ce8e)
+## Task
+Provisioning Infrastructure as a code with terraform for Web Applications and Databases
+(MongoDB, SQL Server) and Redis for caching, with Domain Name, Certificate, and Load
+Balancer, Using docker and Kubernetes.
+## Description
+As a DevOps engineer, your task is to write a terraform template to provision the infrastructure
+for a web application and its associated databases MongoDB, SQL Server, and Redis for
+caching. Additionally, you will need to set up a domain name, SSL certificate, and load balancer
+to ensure scalability and security. This task will test your skills in infrastructure provisioning,
+database management, caching, networking, and security.
+Application, databases and Redis will be each one as a dockers and use Kubernetes to let up a
+replication controller to run pods that are accessed as services on Docker.
+Application docker to use in the task:
+https://github.com/docker/awesome-compose/tree/master/aspnet-mssql
 
-## Tools Used
+## Tech Stack
 
 * [Terraform](https://www.terraform.io/)
 * [AWS](https://aws.amazon.com/)
@@ -19,8 +35,8 @@ This project contains:
 * [redis](https://redis.io/)
 * [sql-server](https://www.microsoft.com/en-us/sql-server)
 
-## some edits  for adding redis
-dbinstance.cs
+## Configured The App to Utilize Redis 
+**dbinstance.cs**
 ```
 using System;
 using Microsoft.AspNetCore;
@@ -42,7 +58,7 @@ class DBinstance
 
 }
 ``` 
-Dockerfile
+**Dockerfile**
 
 ```
 RUN dotnet add package NRedisStack
@@ -50,16 +66,14 @@ RUN dotnet add package NRedisStack
 
 ## Get Started
 
-### Get The Code 
-* Using [Git](https://git-scm.com/), clone the project.
-
+### Clone The Repo 
     ```
     git clone https://github.com/AmrTarek17/widebot-task.git
     ```
-### Setup Infra
+### Setup The Infra
 * First setup your aws account with cli.
 
-* Second build the infrastructure by run
+* Second build the infrastructure by running
 
     ```bash
     cd widebot-task/terraform
@@ -80,22 +94,19 @@ RUN dotnet add package NRedisStack
 
        
 
-### deploy manifests file
+### Update Kubeconfig
     
 ```        
-# NOTE
-You need to get attached to cluster using.
 aws eks --region <region> update-kubeconfig --name <clusterName>
 ```
-    
+### Deploy manifests file
+
 ``` 
 kubectl apply -f manifests/.
 ```
-![image](https://github.com/AmrTarek17/widebot-task/assets/47079437/93b3ed5c-5287-4807-8005-d666c9420a96)
+![image](./docs/images/get-all.png)
 
 ---
-
-You can try my deployed web-app from [here](http://a4753f8c748e34c9590ab7cf68efe89d-1278385603.us-west-2.elb.amazonaws.com/)
 
 
 

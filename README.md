@@ -57,13 +57,11 @@ This project contains:
 ```        
 # NOTE
 You need to get attached to cluster using.
-```
-```bash
-aws eks --region <region> update-kubeconfig --name <clusterName> 
+aws eks --region <region> update-kubeconfig --name <clusterName>
 ```
     
 ``` 
-    kubectl apply -f manifests/.
+kubectl apply -f manifests/.
 ```
 ![image](https://github.com/AmrTarek17/widebot-task/assets/47079437/93b3ed5c-5287-4807-8005-d666c9420a96)
 

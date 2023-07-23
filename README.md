@@ -34,7 +34,7 @@ This project contains:
 * Second build the infrastructure by run
 
     ```bash
-    cd iti-project/terraform
+    cd widebot-task/terraform
     ```
 
     ``` 
@@ -54,7 +54,7 @@ This project contains:
 
 ### deploy manifests file
     
-    ```
+    ```bash
     # NOTE
     You need to get attached to cluster using.
     aws eks --region <region> update-kubeconfig --name <clusterName> 

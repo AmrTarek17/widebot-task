@@ -19,6 +19,34 @@ This project contains:
 * [redis](https://redis.io/)
 * [sql-server](https://www.microsoft.com/en-us/sql-server)
 
+## some edits  for adding redis
+dbinstance.cs
+```
+using System;
+using Microsoft.AspNetCore;
+using Microsoft.AspNetCore.Builder;
+using Microsoft.AspNetCore.Hosting;
+using aspnetapp;
+using Microsoft.Extensions.Hosting;
+using NRedisStack;
+using NRedisStack.RedisStackCommands;
+using StackExchange.Redis;
+
+class DBinstance
+{
+    public static IDatabase CreateDBinstance(string[] args) {
+        ConnectionMultiplexer redis = ConnectionMultiplexer.Connect(Environment.GetEnvironmentVariable("Databases"));
+        IDatabase db = redis.GetDatabase();
+        return db;
+    }
+
+}
+``` 
+Dockerfile
+
+```
+RUN dotnet add package NRedisStack
+```
 
 ## Get Started
 
@@ -68,6 +96,7 @@ kubectl apply -f manifests/.
 ---
 
 You can try my deployed web-app from [here](http://a4753f8c748e34c9590ab7cf68efe89d-1278385603.us-west-2.elb.amazonaws.com/)
+
 
 
 :tada: :tada: :tada: :tada:
